@@ -1,30 +1,37 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </nav>
-  <router-view/>
+  <div class="p-6 w-auto bg-stone-300">
+    <main class="flex">
+      <article class="flex-auto w-1/3">
+        <nav>
+          <h1 class="text-3xl">停掐</h1>
+        </nav>
+        <router-view />
+      </article>
+      <aside class="flex-auto w-2/3 rounded-xl overflow-hidden shadow-xl">
+        <GoogleMap
+          :api-key="mapsKey"
+          style="width: 100%; height: 800px"
+          :center="center"
+          :zoom="15"
+        >
+          <Marker :options="{ position: center }" />
+        </GoogleMap>
+      </aside>
+    </main>
+  </div>
 </template>
 
-<style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+<script>
+import { defineComponent } from 'vue';
+import { GoogleMap, Marker } from 'vue3-google-map';
 
-nav {
-  padding: 30px;
+export default defineComponent({
+  components: { GoogleMap, Marker },
+  setup() {
+    const mapsKey = process.env.VUE_APP_MAPS_KEY;
+    const center = { lat: 40.689247, lng: -74.044502 };
 
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
-}
-</style>
+    return { mapsKey, center };
+  },
+});
+</script>
