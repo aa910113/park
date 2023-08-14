@@ -2,9 +2,9 @@ import { createRouter, createWebHashHistory } from 'vue-router';
 
 const routes = [
   {
-    path: "/",
-    name: "parking",
-    component: ParkingView,
+    path: '/',
+    name: 'parking',
+    component: () => import('../views/ParkingView.vue'),
   },
 ];
 
