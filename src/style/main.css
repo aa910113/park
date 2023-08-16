@@ -1,0 +1,50 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: 'YuPearl';
+  src: url('../assets/font/YuPearl-Medium.woff') format('woff');
+}
+@font-face {
+  font-family: 'YuPearlExtraLight';
+  src: url('../assets/font/YuPearl-ExtraLight.woff') format('woff');
+}
+@layer base {
+  html {
+    font-family: YuPearl;
+    color: #0a2a3a;
+    background-color: #f3f5fc;
+  }
+  .text-YuPearlExtraLight {
+    font-family: YuPearlExtraLight;
+  }
+  .card{
+    transition: 0.5s;
+    overflow: hidden;
+  }
+  .card.open{
+    max-height: 60rem;
+  }
+}
+@layer utilities {
+  .card {
+    @apply relative flex bg-white bg-clip-border border border-slate-300 rounded-3xl shadow max-h-28 mb-5 me-2
+  }
+  .card-body {
+    @apply p-4 flex-auto
+  }
+}
+::-webkit-scrollbar {
+    width: 10px;
+}
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 5px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
